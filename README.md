@@ -7,7 +7,7 @@ Ce répertoire contient le projet unity et les médias de la conceptualisation d
 Ce travail a été fait par Nicolas Cruz, Alexandre Plante-Salmeron et  Félix Lévesque. Ce projet a été fait avec Unity (2022.3.62f3).
 
 
-### Description du projet
+### Description du jeu
 
 #### L'ASCENSION
 
