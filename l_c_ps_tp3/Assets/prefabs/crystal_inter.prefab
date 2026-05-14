@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688550128180794430}
+  - component: {fileID: 8976184569495610161}
   - component: {fileID: 818392526102047055}
   - component: {fileID: 9029831918072797753}
   - component: {fileID: 5019012225453042476}
+  - component: {fileID: 1673323078168600337}
   m_Layer: 0
   m_Name: crystal_inter
   m_TagString: Untagged
@@ -34,6 +36,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -84.942, y: -132.318, z: 116.93}
+--- !u!114 &8976184569495610161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340616530739505997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d868cdcb105284f9e4f9380e0cfbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  speed: 2
 --- !u!33 &818392526102047055
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105,3 +122,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1673323078168600337
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340616530739505997}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.051456638, y: 0.051840138, z: 0.03730831}
+  m_Center: {x: -0.0055656265, y: 0.02346942, z: 0.01366369}
