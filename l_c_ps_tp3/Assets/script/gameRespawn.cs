@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class gameRespawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float threshold;
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        
+        if(transform.position.y < threshold)
+        {
+            transform.position = new Vector3(-4.82f, -0.71f, -2.07f);
+        }
     }
 }
