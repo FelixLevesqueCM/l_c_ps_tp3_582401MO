@@ -2,19 +2,29 @@ using UnityEngine;
 
 public class CrystalInteraction : MonoBehaviour
 {
-    [Header("RÈglages du Mur")]
+    [Header("R√©glages du Mur")]
     public GameObject wall;
-    public Vector3 targetPosition;
+    [Tooltip("Distance de mont√©e du mur")]
+    public float moveDistance = 5f; 
     public float speed = 2f;
 
+    private Vector3 finalTarget; 
     private bool hasBeenHit = false;
+
+    private void Start()
+    {
+        if (wall != null)
+        {
+            finalTarget = wall.transform.position + new Vector3(0, moveDistance, 0);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Weapon") && !hasBeenHit)
         {
             hasBeenHit = true;
-            Debug.Log("Impact confirmÈ sur le cristal ! Activation du mur.");
+            Debug.Log("Impact confirm√© ! Le mur monte.");
 
             if (TryGetComponent<Renderer>(out Renderer ren))
             {
@@ -29,7 +39,7 @@ public class CrystalInteraction : MonoBehaviour
         {
             wall.transform.position = Vector3.MoveTowards(
                 wall.transform.position,
-                targetPosition,
+                finalTarget,
                 speed * Time.deltaTime
             );
         }
