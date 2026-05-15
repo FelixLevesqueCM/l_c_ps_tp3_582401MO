@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class platformcollision : MonoBehaviour
+public class PlatformCollision : MonoBehaviour // Idéalement, on met une majuscule aux noms de classes
 {
     [SerializeField] string playerTag = "Player";
     [SerializeField] Transform platform_bouge;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals(playerTag))
+        // CompareTag est beaucoup plus performant que .tag.Equals()
+        if (other.CompareTag(playerTag))
         {
-            other.gameObject.transform.parent = platform_bouge;
+            // SetParent est la méthode recommandée par Unity au lieu de modifier .parent directement
+            other.transform.SetParent(platform_bouge);
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag.Equals(playerTag))
+        if (other.CompareTag(playerTag))
         {
-            other.gameObject.transform.parent = null;
+            // On retire le parent quand le joueur quitte la plateforme
+            other.transform.SetParent(null);
         }
-
     }
 }
