@@ -2,27 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformCollision : MonoBehaviour // Idéalement, on met une majuscule aux noms de classes
+[RequireComponent(typeof(Collider))]
+public class PlatformCollision : MonoBehaviour
 {
-    [SerializeField] string playerTag = "Player";
-    [SerializeField] Transform platform_bouge;
+    [SerializeField] private string playerTag = "Player";
+    [SerializeField] private Transform platformParent;
+    [SerializeField] private bool preserveWorldPosition = true;
+    [SerializeField] private bool debugLog = false;
+
+    private void OnValidate()
+    {
+        // Si le GameObject a un Collider, on s'assure qu'il est en trigger dans l'éditeur
+        var col = GetComponent<Collider>();
+        if (col != null && !col.isTrigger)
+        {
+            col.isTrigger = true;
+            if (debugLog)
+            {
+                Debug.LogWarning($"{name} : Collider détecté — isTrigger activé automatiquement.");
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        // CompareTag est beaucoup plus performant que .tag.Equals()
-        if (other.CompareTag(playerTag))
+        if (debugLog)
         {
-            // SetParent est la méthode recommandée par Unity au lieu de modifier .parent directement
-            other.transform.SetParent(platform_bouge);
+            Debug.Log($"OnTriggerEnter détecté avec : {other.name}");
         }
+
+        if (!other.CompareTag(playerTag))
+        {
+            return;
+        }
+
+        if (platformParent == null)
+        {
+            if (debugLog)
+            {
+                Debug.LogWarning($"PlatformCollision ({name}) : platformParent non assigné.");
+            }
+
+            return;
+        }
+
+        // Attacher le joueur à la plateforme (préserver ou non la position mondiale selon le flag)
+        other.transform.SetParent(platformParent, preserveWorldPosition);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        if (!other.CompareTag(playerTag))
         {
-            // On retire le parent quand le joueur quitte la plateforme
-            other.transform.SetParent(null);
+            return;
         }
+
+        // Détacher le joueur de la plateforme
+        other.transform.SetParent(null, preserveWorldPosition);
     }
 }

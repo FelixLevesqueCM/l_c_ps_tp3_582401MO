@@ -224,7 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  platform_bouge: {fileID: 7990233130438339699}
+  platformParent: {fileID: 7990233130438339699}
+  preserveWorldPosition: 1
+  debugLog: 0
 --- !u!1 &8033113626880793639
 GameObject:
   m_ObjectHideFlags: 0
