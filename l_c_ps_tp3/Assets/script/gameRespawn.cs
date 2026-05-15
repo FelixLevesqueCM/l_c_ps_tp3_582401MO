@@ -47,18 +47,37 @@ public class GameRespawn : MonoBehaviour
     public void Respawn()
     {
         Vector3 target = respawnPoint != null ? respawnPoint.position : _initialPosition;
-        transform.position = target;
 
+        // --- LA SOLUTION POUR LE JOUEUR VR ---
+        CharacterController cc = GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            // On désactive le contrôleur pour qu'il lâche prise sur la position
+            cc.enabled = false;
+
+            // On téléporte le joueur à la destination
+            transform.position = target;
+
+            // On réactive le contrôleur immédiatement
+            cc.enabled = true;
+        }
+        else
+        {
+            // Si ce n'est pas un joueur VR, on téléporte normalement
+            transform.position = target;
+        }
+
+        // Le reste de ton code original pour annuler la vitesse d'un Rigidbody (s'il y en a un)
         if (_rigidbody != null && resetVelocity)
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
-            // Si le Rigidbody utilise la physique continue, on peut aussi forcer l'interpolation désactivée/activée selon les besoins.
         }
 
         onRespawn?.Invoke();
     }
 
+    // L'accolade en trop a été retirée juste au-dessus !
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -66,4 +85,4 @@ public class GameRespawn : MonoBehaviour
         Gizmos.DrawWireSphere(gizmoPos, 0.5f);
         Gizmos.DrawLine(gizmoPos, gizmoPos + Vector3.up * 0.5f);
     }
-}
+} // La classe se termine bien ici maintenant

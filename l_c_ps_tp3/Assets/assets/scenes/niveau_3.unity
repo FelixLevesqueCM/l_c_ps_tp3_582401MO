@@ -9147,14 +9147,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 09ef659a5ad5c0f4b848f827951571e1, type: 2}
     m_RemovedComponents:
-    - {fileID: 763616593436821669, guid: 920cdc440c148814b9bfdf69d18815a9, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1704361145656723520, guid: 920cdc440c148814b9bfdf69d18815a9,
-        type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2104710749}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 920cdc440c148814b9bfdf69d18815a9, type: 3}
 --- !u!1001 &685408940
 PrefabInstance:
@@ -15693,7 +15689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   platformParent: {fileID: 2127868693}
-  preserveWorldPosition: 1
   debugLog: 0
 --- !u!65 &1201900696
 BoxCollider:
@@ -26744,31 +26739,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b408ff046e97d28428f851dbcce2f2d5, type: 3}
---- !u!1 &2104710729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1704361145656723520, guid: 920cdc440c148814b9bfdf69d18815a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 681092470}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2104710749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104710729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d00f1d77ce15a46b340501ef2cc988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: -30
-  respawnPoint: {fileID: 626126206}
-  resetVelocity: 1
-  useFixedUpdate: 1
-  onRespawn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &2105844879
 PrefabInstance:
   m_ObjectHideFlags: 0
