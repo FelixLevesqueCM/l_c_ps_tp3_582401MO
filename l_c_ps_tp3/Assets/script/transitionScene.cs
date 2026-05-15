@@ -1,22 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // Requis pour la gestion des scènes
 
-public class transitionScene : MonoBehaviour
+public class TeleportationCube : MonoBehaviour
 {
-    public string sceneToLoad;
-
+    // Se déclenche quand un objet entre dans la zone du Collider
     private void OnTriggerEnter(Collider other)
     {
+        // On vérifie si l'objet qui touche le cube possède le tag "Player"
         if (other.CompareTag("Player"))
         {
-            Teleport();
+            // Charge la scène nommée exactement "niveau_2"
+            SceneManager.LoadScene("niveau_2");
         }
     }
-
-    void Teleport()
-{
-    GetComponent<Collider>().enabled = false;
-    
-    SceneManager.LoadScene(sceneToLoad);
-}
 }
