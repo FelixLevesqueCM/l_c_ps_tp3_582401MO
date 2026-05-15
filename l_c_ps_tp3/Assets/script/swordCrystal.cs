@@ -10,9 +10,12 @@ public class CrystalInteraction : MonoBehaviour
 
     private Vector3 finalTarget; 
     private bool hasBeenHit = false;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (wall != null)
         {
             finalTarget = wall.transform.position + new Vector3(0, moveDistance, 0);
@@ -25,6 +28,11 @@ public class CrystalInteraction : MonoBehaviour
         {
             hasBeenHit = true;
             Debug.Log("Impact confirmé ! Le mur monte.");
+
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            }
 
             if (TryGetComponent<Renderer>(out Renderer ren))
             {
